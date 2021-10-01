@@ -17,6 +17,7 @@ class UserController extends Controller
     {
         $users = User::all();
         $active_menu = 'users';
+        
         return view('users.index', compact('users', 'active_menu'));
     }
 
@@ -28,7 +29,10 @@ class UserController extends Controller
     public function create()
     {
         //
-        return view('users.create');
+        $user = new User;
+        $active_menu = 'users';
+        $action = 'user.store';
+        return view('users.create', compact('user', 'active_menu', 'action'));
     }
 
     /**
@@ -88,6 +92,10 @@ class UserController extends Controller
     public function edit($id)
     {
         //
+        $user = User::where('id', $id)->first();
+        $active_menu = 'users';
+        $action = 'user.update';
+        return view('users.create', compact('user', 'active_menu', 'action'));
     }
 
     /**
@@ -100,6 +108,17 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $user = User::where('id', $id)->first();
+        $user->name = $request->name;
+        $user->email = $request->email;
+        if($user->update()){
+            session(['alert' => 'User updated successfully', 'class' => 'alert alert-success']);
+            return redirect()->route('users');
+        } else {
+            session(['alert' => 'Unable to update user this time please try again later', 'class' => 'alert alert-warning']);
+            return redirect()->route('user.edit', $id);
+        }
+
     }
 
     /**
@@ -111,5 +130,13 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
+        $user = User::where('id', $id)->first();
+        if($user->delete()){
+            session(['alert' => 'User deleted successfully', 'class' => 'alert alert-success']);
+            return redirect()->route('users');
+        } else {
+            session(['alert' => 'Unable to delete user this time please try again later', 'class' => 'alert alert-warning']);
+            return redirect()->route('users');
+        }
     }
 }

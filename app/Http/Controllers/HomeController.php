@@ -23,6 +23,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $active_menu = 'Home';
+        return view('home', compact('active_menu'));
     }
 }

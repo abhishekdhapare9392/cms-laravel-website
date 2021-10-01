@@ -43,7 +43,7 @@
                             </form>
                         </div>
                     </li>
-                    <li class="nav-item {{ $active_menu = 'Users' ? 'menu-active' : '' }}">
+                    <li class="nav-item <?php if($active_menu == 'users') { echo 'menu-active';} else {echo  '';} ?>">
                         <a class="nav-link" href="{{ route('users') }}">Users</a>
                     </li>
                 @endguest
