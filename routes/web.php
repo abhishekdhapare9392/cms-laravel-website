@@ -30,4 +30,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/users/update/{id}', [App\Http\Controllers\UserController::class, 'update'])->name('user.update');
     Route::get('users/delete/{id}', [App\Http\Controllers\UserController::class, 'destroy'])->name('user.delete');
 
+    Route::get('/about', [App\Http\Controllers\AboutController::class, 'index'])->name('about');
+
 });
