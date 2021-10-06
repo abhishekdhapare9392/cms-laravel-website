@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\About;
 use Illuminate\Http\Request;
 
 class AboutController extends Controller
@@ -35,16 +36,38 @@ class AboutController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // var_dump($request->image);
+        // exit();
+        if (empty($request->title) && !empty($request->image) && !empty($request->mission) && !empty($vision)) {
+
+            $about = new About();
+            $about->title = $request->title;
+            $about->image = $request->image;
+            $about->mission = $request->mission;
+            $about->vision = $request->vision;
+
+            if ($about->save()) {
+                session(['alert' => 'details upload Successfully', 'class' => 'alert alert success']);
+                redirect()->route('abouts');
+            } else {
+                session(['alert' => 'Unable to upload details please again', 'class' => 'alert alert warning']);
+                return redirect()->route('abouts');
+            }
+        } else {
+
+            session(['alert' => 'All fields are required', 'class' => 'alert alert-danger']);
+            return redirect()->route('abouts');
+        }
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\About  $about
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $about)
+
     {
         //
     }
@@ -64,10 +87,12 @@ class AboutController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
+
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
+
     {
         //
     }

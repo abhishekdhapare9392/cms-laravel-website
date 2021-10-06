@@ -1,17 +1,21 @@
-@extends('layouts.app')
+
+@extends('layouts.app');
 
 @section('content')
+    
+
 <div class="container-fluid">
     <div class="row">
-        <div class="col-12 col-md-12">
-            <div class="card">
-                <div class="card-title p-3">
-                    <h1>About Us page</h1>
-                </div>
-                <div class="card-body">
-                    <div class="row">
+            <div class="col-12 col-md-12">
+                <div class="card">
+                      <div class="card-title p-3">
+                         <h1>About Us</h1>
+                     </div>
+                     <div class="card-body">
+                        <div class="row">
                         <div class="col-12 col-md-12">
-                            <form action="" method="POST" enctype="multipart/form-data">
+                            <form action="{{ route('abouts.store') }}" method="POST" enctype="multipart/form-data">
+
                                 @csrf
                                 <div class="row mb-3">
                                     <div class="col-12 col-md-6">
@@ -48,12 +52,15 @@
                                         </div>
                                     </div>
                                 </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
+                                </form>
+                            </div>
+                          </div>
+                     </div>
+                 </div>
+             </div>
         </div>
     </div>
-</div>
+
+
 @endsection
