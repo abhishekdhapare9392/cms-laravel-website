@@ -46,6 +46,9 @@
                     <li class="nav-item <?php if($active_menu == 'users') { echo 'menu-active';} else {echo  '';} ?>">
                         <a class="nav-link" href="{{ route('users') }}">Users</a>
                     </li>
+                     <li class="nav-item <?php if($active_menu == 'abouts') { echo 'menu-active';} else {echo  '';} ?>">
+                        <a class="nav-link" href="{{ route('abouts') }}">About Us</a>
+                    </li>
                 @endguest
             </ul>
         </div>
