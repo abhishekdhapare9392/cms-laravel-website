@@ -14,7 +14,7 @@ class AboutController extends Controller
      */
     public function index()
     {
-        $active_menu = 'abouts';
+        $active_menu = 'about';
         return view('about.about', compact('active_menu'));
     }
 
@@ -66,7 +66,8 @@ class AboutController extends Controller
      * @param  \App\Models\About  $about
      * @return \Illuminate\Http\Response
      */
-    public function show(About $about)
+    public function show(Request $about)
+
     {
         //
     }
@@ -74,10 +75,10 @@ class AboutController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\About  $about
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(About $about)
+    public function edit($id)
     {
         //
     }
@@ -86,10 +87,12 @@ class AboutController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\About  $about
+
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, About $about)
+    public function update(Request $request, $id)
+
     {
         //
     }
@@ -97,10 +100,10 @@ class AboutController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\About  $about
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(About $about)
+    public function destroy($id)
     {
         //
     }
