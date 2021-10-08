@@ -1,17 +1,17 @@
 
-@extends('layouts.app');
+    @extends('layouts.app');
 
-@section('content')
-    
+    @section('content')
 
-<div class="container-fluid">
-    <div class="row">
+
+    <div class="container-fluid">
+        <div class="row">
             <div class="col-12 col-md-12">
                 <div class="card">
-                      <div class="card-title p-3">
-                         <h1>About Us</h1>
-                     </div>
-                     <div class="card-body">
+                    <div class="card-title p-3">
+                        <h1>About Us</h1>
+                    </div>
+                    <div class="card-body">
                         <div class="row">
                         <div class="col-12 col-md-12">
                             <form action="{{ route('abouts.store') }}" method="POST" enctype="multipart/form-data">
@@ -48,23 +48,20 @@
                                             <input type="text" name="vision" id="vision" class="form-control" placeholder="Enter the vision" value="{{ isset($about->vision) ? $about->vision : '' }}">
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12 col-12 text-center">
-                                        <div class="form-group">
-                                            <input type="submit" value="Save" class="btn btn-primary" name="submit">
+                                    <div class="row">
+                                        <div class="col-md-12 col-12 text-center">
+                                            <div class="form-group">
+                                                <input type="submit" value="Save" class="btn btn-primary" name="submit">
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-
                                 </form>
                             </div>
-                          </div>
-                     </div>
-                 </div>
-             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
-
-@endsection
+        @endsection

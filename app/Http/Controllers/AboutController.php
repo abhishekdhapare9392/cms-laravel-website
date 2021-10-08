@@ -15,9 +15,9 @@ class AboutController extends Controller
      */
     public function index()
     {
-        $about = About::where('id', '=', '1')->first();
+
         $active_menu = 'abouts';
-        return view('about.about', compact('active_menu', 'about'));
+        return view('about.about', compact('active_menu'));
     }
 
     /**
@@ -40,7 +40,7 @@ class AboutController extends Controller
     {
         // var_dump($request->image);
         // exit();
-        if (!empty($request->id)) {
+        if (!empty($request->title) && !empty($request->image) && !empty($request->mission) && !empty($request->vision)) {
 
             if (!empty($request->title) && !empty($request->mission) && !empty($request->vision)) {
 
@@ -136,8 +136,7 @@ class AboutController extends Controller
      * @param  \App\Models\About  $about
      * @return \Illuminate\Http\Response
      */
-    public function show(Request $about)
-
+    public function show($about)
     {
         //
     }
@@ -145,10 +144,10 @@ class AboutController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\About  $about
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(About $about)
     {
         //
     }
@@ -157,12 +156,10 @@ class AboutController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-
-     * @param  int  $id
+     * @param  \App\Models\About  $about
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-
+    public function update(Request $request, About $about)
     {
         //
     }
@@ -170,10 +167,10 @@ class AboutController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\About  $about
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(About $about)
     {
         //
     }
