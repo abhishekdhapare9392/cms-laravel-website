@@ -46,17 +46,18 @@
                                     <input type="text" name="title" id="title" class="form-control"
                                         placeholder="Enter the title" aria-describedby="helpId">
                                 </div>
-
-                                <div class="col-12 col-md-6">
-                                    <div class="mb-3">
-                                        <label for="email" class="form-label">Email</label>
-                                        <input type="email" class="form-control" name="email" id="email"
-                                            aria-describedby="emailHelpId" placeholder="Enter your Email Id">
-                                    </div>
-                                </div>
-
                             </div>
+
+                            <div class="col-12 col-md-6">
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">Email</label>
+                                    <input type="email" class="form-control" name="email" id="email"
+                                        aria-describedby="emailHelpId" placeholder="Enter your Email Id">
+                                </div>
+                            </div>
+
                         </div>
+
 
                         <div class="row">
                             <div class="col-12 col-md-6">
