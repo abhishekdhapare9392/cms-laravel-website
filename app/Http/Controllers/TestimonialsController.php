@@ -16,7 +16,7 @@ class TestimonialsController extends Controller
     {
         $active_menu = "testimonials";
         $testimonials = testimonials::all();
-        return view('Testimonials.list', compact('active_menu', 'testimonials'));
+        return view('testimonials.list', compact('active_menu', 'testimonials'));
     }
 
     /**
@@ -26,7 +26,10 @@ class TestimonialsController extends Controller
      */
     public function create()
     {
-        //
+        $testimonials = 'testimonials';
+        $active_menu = 'testimonials';
+        $action = 'testimonials.add';
+        return view('testimonials.testimonials', compact('active_menu', 'action', 'testimonials'));
     }
 
     /**
@@ -40,20 +43,20 @@ class TestimonialsController extends Controller
         if (!empty($request->client_names) && !empty($request->client_designation) && !empty($request->client_comment)) {
             $testimonials = new Testimonials();
             $testimonials->client_names = $request->client_names;
-            $testimonials->client_designation = $request->client_designation;
-            $testimonials->client_comment = $request->client_comment;
+            $testimonials->client_designation = $request->designation;
+            $testimonials->client_comment = $request->comment;
 
             if ($testimonials->save()) {
-                session(['alert' => 'details upload Successfully', 'class' => 'alert alert success']);
+                session(['alert' => 'details upload Successfully', 'class' => 'alert alert-success']);
                 return redirect()->route('testimonials.list');
             } else {
-                session(['alert' => 'Unable to upload details please again', 'class' => 'alert alert warning']);
-                return redirect()->route('testimonials');
+                session(['alert' => 'Unable to upload details please again', 'class' => 'alert alert-warning']);
+                return redirect()->route('testimonials.add');
             }
         } else {
 
             session(['alert' => 'All fields are required', 'class' => 'alert alert-danger']);
-            return redirect()->route('testimonials');
+            return redirect()->route('testimonials.add');
         }
     }
 

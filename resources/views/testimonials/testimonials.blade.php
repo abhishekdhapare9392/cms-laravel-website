@@ -15,8 +15,8 @@
                             <form action="{{route('testimonials.store')}}" method="post">
                                 @csrf
                                 <div class="col-md-6 mb-3">
-                                    <label for="client-name" class="form-label">Client name:</label>
-                                    <input type="text" name="client-name" id="client-name" class="form-control"
+                                    <label for="client_name" class="form-label">Client name:</label>
+                                    <input type="text" name="client_name" id="client-name" class="form-control"
                                         placeholder="Enter the name of client" aria-describedby="helpId">
                                 </div>
 
