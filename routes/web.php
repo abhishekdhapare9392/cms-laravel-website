@@ -45,4 +45,9 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/testimonials', [App\Http\Controllers\TestimonialsController::class, 'index'])->name('testimonials');
     Route::post('/testimonials', [App\Http\Controllers\TestimonialsController::class, 'store'])->name('testimonials.store');
+    Route::get('/testimonials/testimonials', [App\Http\Controllers\TestimonialsController::class, 'create'])->name('testimonials.add');
+
+    // Route::get('/contact', [App\Http\Controllers\ContactController::class, 'index'])->name('contact');
+    Route::get('/contact', [App\Http\Controllers\ContactController::class, 'create'])->name('contact');
+    Route::get('/contact/store', [App\Http\Controllers\ContactController::class, 'store'])->name('contact.store');
 });

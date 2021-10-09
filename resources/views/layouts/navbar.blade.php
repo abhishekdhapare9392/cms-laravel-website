@@ -55,6 +55,9 @@
                     class="nav-item <?php if($active_menu == 'testimonials') { echo 'menu-active';} else {echo  '';} ?>">
                     <a class="nav-link" href="{{ route('testimonials') }}">Testimonials</a>
                 </li>
+                <li class="nav-item <?php if($active_menu == 'contact') { echo 'menu-active';} else {echo  '';} ?>">
+                    <a class="nav-link" href="{{ route('contact') }}">Contacts</a>
+                </li>
                 @endguest
             </ul>
         </div>
