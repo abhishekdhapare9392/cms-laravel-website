@@ -1,8 +1,4 @@
 @extends('layouts.app');
-
-@section('content')
-
-
 <div class="container-fluid">
     <div class="row">
         <div class="col-12 col-md-12">
@@ -15,6 +11,7 @@
                         <div class="col-12 col-md-12">
                             <form action="{{ route('abouts.store') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
+
                                 <div class="row mb-3">
                                     <div class="col-12 col-md-6">
                                         <div class="form-group">
@@ -26,8 +23,10 @@
                                     <div class="col-12 col-md-6">
                                         <div class="form-group">
                                             <label for="image">Image</label>
-                                            <input type="file" name="image" id="image" class="form-control"
-                                                title="Upload image for hero section">
+                                            <input type="file" name="image" id="image" class="form-control" title="Upload image for hero section">
+                                            @isset($about->image)
+                                                <img src="{{ $about->image }}" alt="{{ $about->title }}" width="150px" height="auto">
+                                            @endisset
                                         </div>
                                     </div>
                                 </div>
@@ -35,15 +34,14 @@
                                     <div class="col-12 col-md-6">
                                         <div class="form-group">
                                             <label for="mission">Mission</label>
-                                            <input type="text" name="mission" id="mission" class="form-control"
-                                                placeholder="Enter the mission">
+
+                                            <input type="text" name="mission" id="mission" class="form-control" placeholder="Enter the mission" value="{{ isset($about->mission) ? $about->mission : '' }}">
                                         </div>
                                     </div>
                                     <div class="col-12 col-md-6">
                                         <div class="form-group">
                                             <label for="vision">Vision</label>
-                                            <input type="text" name="vision" id="vision" class="form-control"
-                                                placeholder="Enter the vision">
+                                            <input type="text" name="vision" id="vision" class="form-control" placeholder="Enter the vision" value="{{ isset($about->vision) ? $about->vision : '' }}">
                                         </div>
                                     </div>
                                 </div>
