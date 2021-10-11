@@ -50,10 +50,10 @@
                                 <td>{{ $testimonial->client_designation }}</td>
                                 <td>{{ $testimonial->client_comment }}</td>
                                 <td>
-                                    <a href="{{ route('testimonials.edit', $testimonials->id) }}"
+                                    {{-- <a href="{{ route('testimonials.edit', $testimonial->id) }}"
                                         class="btn btn-primary"><i class="fas fa-pencil"></i></a>
-                                    <a href="{{route('testimonials.delete', $testimonials->id)}}"
-                                        class="btn btn-danger"><i class="fas fa-trash"></i></a>
+                                    <a href="{{route('testimonials.delete', $testimonial->id)}}"
+                                        class="btn btn-danger"><i class="fas fa-trash"></i></a> --}}
                                 </td>
                             </tr>
                             @endforeach

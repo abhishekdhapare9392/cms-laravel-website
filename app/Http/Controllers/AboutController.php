@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\About;
 use Illuminate\Http\Request;
+use App\Models\Skills;
+use App\Models\Testimonials;
 use File;
 
 class AboutController extends Controller
@@ -16,8 +18,14 @@ class AboutController extends Controller
     public function index()
     {
 
+        $skills = Skills::all();
+        $testimonials = Testimonials::all();
+        // var_dump($skills);
+        // var_dump($testimonials);
+        // exit();
+
         $active_menu = 'abouts';
-        return view('about.about', compact('active_menu'));
+        return view('about.about', compact('active_menu', 'skills', 'testimonials'));
     }
 
     /**
