@@ -12,13 +12,13 @@
                         <div class="col-12 col-md-12">
                             <form action="{{ route('abouts.store') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
-
+                                <input type="hidden" name="id" value="{{ isset($about->id) ? $about->id : '' }}">
                                 <div class="row mb-3">
                                     <div class="col-12 col-md-6">
                                         <div class="form-group">
                                             <label for="title">Title</label>
                                             <input type="text" id="title" name="title"
-                                                placeholder="Enter the title of about page" class="form-control">
+                                                placeholder="Enter the title of about page" class="form-control" value="{{ isset($about->title) ? $about->title : '' }}">
                                         </div>
                                     </div>
                                     <div class="col-12 col-md-6">
@@ -53,7 +53,11 @@
                                             <button type="button" class="btn btn-warning rounded" id="addSkills"><i class="fas fa-plus"></i>&nbsp;Add Skills</button>
                                             <input type="hidden" name="skills" class="skillId">
                                         </div>
-                                        <div class="flex-d flex-row my-2" id="skillsList"></div>
+                                        <div class="flex-d flex-row my-2" id="skillsList">
+                                            @foreach ($skillsArray as $skill)
+                                            <span class="badge rounded-pill bg-info me-2">{{$skill->skill_name .' - '. $skill->skill_percentage}}%</span>
+                                            @endforeach
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="row">

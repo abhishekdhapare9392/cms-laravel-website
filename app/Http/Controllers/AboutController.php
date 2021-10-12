@@ -20,12 +20,26 @@ class AboutController extends Controller
 
         $skills = Skills::all();
         $testimonials = Testimonials::all();
+        $about = About::first();
+        if(!empty($about)){
+            $skills_list = explode(',', $about->skills);
+        }
+        $i= 0;
+        $skillsArray = [];
+        foreach ($skills_list as $key => $value) {
+            if(!empty($value)){
+                $skillsArray[$i] = Skills::where('id', $value)->first();
+            }
+            $i++;
+        }
+        // var_dump($skillsArray);
+
+        
         // var_dump($skills);
         // var_dump($testimonials);
         // exit();
-
         $active_menu = 'abouts';
-        return view('about.about', compact('active_menu', 'skills', 'testimonials'));
+        return view('about.about', compact('active_menu', 'skills', 'testimonials', 'about', 'skillsArray'));
     }
 
     /**
@@ -48,15 +62,16 @@ class AboutController extends Controller
     {
         // var_dump($request->image);
         // exit();
-        if (!empty($request->title) && !empty($request->image) && !empty($request->mission) && !empty($request->vision)) {
-
+        if (!empty($request->id)) {
+            
             if (!empty($request->title) && !empty($request->mission) && !empty($request->vision)) {
-
+                
                 $about = About::where('id', $request->id)->first();
                 $about->title = $request->title;
                 // $about->image = $request->image;
                 $about->mission = $request->mission;
                 $about->vision = $request->vision;
+                $about->skills = $request->skills;
 
                 // var_dump($request->hasFile('image'));
                 // var_dump($_FILES['image']['name'] != '');
@@ -100,6 +115,7 @@ class AboutController extends Controller
                 // $about->image = $request->image;
                 $about->mission = $request->mission;
                 $about->vision = $request->vision;
+                $about->skills = $request->skills;
 
                 // var_dump($request->hasFile('image'));
                 // var_dump($_FILES['image']['name'] != '');
