@@ -1,4 +1,5 @@
 @extends('layouts.app');
+@section('content')
 <div class="container-fluid">
     <div class="row">
         <div class="col-12 col-md-12">
@@ -45,6 +46,16 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="row mb-3">
+                                    <div class="col-12 col-md-6">
+                                        <div class="form-group">
+                                            <label for="skills">Skills</label>
+                                            <button type="button" class="btn btn-warning rounded" id="addSkills"><i class="fas fa-plus"></i>&nbsp;Add Skills</button>
+                                            <input type="hidden" name="skills" class="skillId">
+                                        </div>
+                                        <div class="flex-d flex-row my-2" id="skillsList"></div>
+                                    </div>
+                                </div>
                                 <div class="row">
                                     <div class="col-md-12 col-12 text-center">
                                         <div class="form-group">
@@ -61,4 +72,35 @@
     </div>
 </div>
 
+<div class="modal fade" id="skillsModal" tabindex="-1" aria-labelledby="skillsModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="skillsModalLabel">Skills</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-md-12">
+                    @foreach ($skills as $skill)
+                        <div class="form-group">
+                            <input type="checkbox" name="skill" id="skill-{{ $skill->id }}" data-id="{{ $skill->id }}" data-skill-name="{{ $skill->skill_name }}" data-skill-per="{{ $skill->skill_percentage }}">
+                            <label for="skill-{{ $skill->id }}">{{ $skill->skill_name }}</label>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary selectSkills">Select</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
 @endsection
+
+@push('scripts')
+    <script src="{{ asset('js/about.js') }}"></script>
+@endpush
