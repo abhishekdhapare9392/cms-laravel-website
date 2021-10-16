@@ -20,6 +20,8 @@ Route::get('/', function () {
 Route::get('/login', [App\Http\Controllers\LoginController::class, 'index'])->name('login');
 Route::post('/login', [App\Http\Controllers\LoginController::class, 'login'])->name('login.check');
 
+Route::get('/aboutpage', [App\Http\Controllers\web\AboutController::class, 'index'])->name('aboutpage');
+
 Auth::routes();
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

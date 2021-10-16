@@ -56,7 +56,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row mb-3">
+                                {{-- <div class="row mb-3">
                                     <div class="col-12 col-md-6">
                                         <div class="form-group">
                                             <label for="skills">Skills</label>
@@ -69,15 +69,15 @@
                                             @endforeach
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
+                                </div> --}}
+                                <div class="row mb-3">
                                     <div class="col-12 col-md-6 ">
                                         <div class="form-group">
 
                                             <button type="button" class="btn btn-success" id="addSkills"><i
                                                     class="fas fa-plus"></i>&nbsp; Skills</button>
 
-                                            <input type="hidden" name="skills" class="skillId">
+                                            <input type="hidden" name="skills" class="skillId" value="{{ isset($about->skills) ? $about->skills : '' }}">
                                         </div>
                                         <div class="flex-d flex-row my-2" id="skillsList">
                                             @foreach ($skillsArray as $skill)
@@ -89,7 +89,7 @@
                                     <div class="col-12 col-md-6">
                                         <button type="button" class="btn btn-info" id="addTest"><i
                                                 class="fas fa-plus"></i>&nbsp; Testimonials</button>
-                                        <input type="hidden" name="testId" class="testId">
+                                        <input type="hidden" name="testId" class="testId" value="{{ isset($about->testimonials) ? $about->testimonials : '' }}">
                                     </div>
                                 </div>
 
@@ -104,6 +104,13 @@
                                                 </tr>
                                             </thead>
                                             <tbody id="testimonials-selected">
+                                                @foreach ($testsArray as $testi1)
+                                                <tr>
+                                                    <td>{{$testi1->client_names}}</td>
+                                                    <td>{{$testi1->client_designation}}</td>
+                                                    <td>{{$testi1->client_comment}}</td>
+                                                  </tr>
+                                                @endforeach
                                             </tbody>
                                         </table>
                                     </div>
@@ -172,14 +179,14 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-md-12">
-                            @foreach ($testimonials as $testimonial)
+                            @foreach ($testimonials as $testi)
                             <div class="form-group">
-                                <input type="checkbox" name="testimonial" id="testimonial-{{ $testimonial->id }}"
-                                    data-id="{{ $testimonial->id }}"
-                                    data-testimonial-name="{{ $testimonial->client_names }}"
-                                    data-testimonial-des="{{ $testimonial->client_designation }}"
-                                    data-testimonial-com="{{ $testimonial->client_comment }}">
-                                <label for="testimonial-{{ $testimonial->id }}">{{ $testimonial->client_names }}</label>
+                                <input type="checkbox" name="testimonial" id="testimonial-{{ $testi->id }}"
+                                    data-id="{{ $testi->id }}"
+                                    data-testimonial-name="{{ $testi->client_names }}"
+                                    data-testimonial-des="{{ $testi->client_designation }}"
+                                    data-testimonial-com="{{ $testi->client_comment }}">
+                                <label for="testimonial-{{ $testi->id }}">{{ $testi->client_names }}</label>
                             </div>
                             @endforeach
                         </div>

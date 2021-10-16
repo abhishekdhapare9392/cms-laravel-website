@@ -19,6 +19,8 @@ class CreateAboutsTable extends Migration
             $table->text('image');
             $table->text('mission');
             $table->text('vision');
+            $table->text('skills');
+            $table->text('testimonials');
             $table->timestamps();
         });
     }
