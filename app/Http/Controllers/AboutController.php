@@ -6,8 +6,6 @@ use App\Models\About;
 use App\Models\Skills;
 use App\Models\Testimonials;
 use Illuminate\Http\Request;
-use App\Models\Skills;
-use App\Models\Testimonials;
 use File;
 
 class AboutController extends Controller
@@ -24,12 +22,13 @@ class AboutController extends Controller
         $active_menu = 'abouts';
         $about = About::first();
 
+        // var_dump(($testimonials));
+        // exit();
+
         $skillsArray = [];
         if (!empty($about)) {
             $skills_list = explode(',', $about->skills);
             $i = 0;
-            var_dump($skills_list);
-            exit();
             foreach ($skills_list as $key => $value) {
                 if (!empty($value)) {
                     $skillsArray[$i] = Skills::where('id', $value)->first();
@@ -40,14 +39,15 @@ class AboutController extends Controller
 
         $testsArray = [];
         if (!empty($about)) {
-            $testimonials = explode(',', $about->testimonials);
+            $testis = explode(',', $about->testimonials);
             $i = 0;
-            foreach ($testimonials as $key => $value) {
+            foreach ($testis as $key => $value) {
                 if (!empty($value)) {
                     $testsArray[$i] = Testimonials::where('id', $value)->first();
                 }
                 $i++;
             }
+            
         }
 
         return view('about.about', compact('about', 'active_menu', 'testimonials', 'testsArray', 'skillsArray', 'skills'));
@@ -83,6 +83,7 @@ class AboutController extends Controller
                 $about->mission = $request->mission;
                 $about->vision = $request->vision;
                 $about->skills = $request->skills;
+                $about->testimonials = $request->testId;
 
                 // var_dump($request->hasFile('image'));
                 // var_dump($_FILES['image']['name'] != '');
@@ -127,6 +128,7 @@ class AboutController extends Controller
                 $about->mission = $request->mission;
                 $about->vision = $request->vision;
                 $about->skills = $request->skills;
+                $about->testimonials = $request->testId;
 
                 // var_dump($request->hasFile('image'));
                 // var_dump($_FILES['image']['name'] != '');
