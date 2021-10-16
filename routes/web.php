@@ -44,10 +44,14 @@ Route::group(['middleware' => 'auth'], function () {
     // Route::post('/skills/store', [App\Http\Controllers\SkillsController::class, 'store'])->name('skills_store');
 
     Route::get('/testimonials', [App\Http\Controllers\TestimonialsController::class, 'index'])->name('testimonials');
+    Route::get('/testimonials/add', [App\Http\Controllers\TestimonialsController::class, 'create'])->name('testimonials.add');
     Route::post('/testimonials', [App\Http\Controllers\TestimonialsController::class, 'store'])->name('testimonials.store');
-    Route::get('/testimonials/testimonials', [App\Http\Controllers\TestimonialsController::class, 'create'])->name('testimonials.add');
+    Route::get('/testimonials/edit/{id}', [App\Http\Controllers\TestimonialsController::class, 'edit'])->name('testimonials.edit');
+    Route::post('/testimonials/update/{id}', [App\Http\Controllers\TestimonialsController::class, 'update'])->name('testimonials.update');
+    Route::get('/testimonials/delete/{id}', [App\Http\Controllers\TestimonialsController::class, 'delete'])->name('testimonials.delete');
 
     // Route::get('/contact', [App\Http\Controllers\ContactController::class, 'index'])->name('contact');
     Route::get('/contact', [App\Http\Controllers\ContactController::class, 'create'])->name('contact');
-    Route::get('/contact/store', [App\Http\Controllers\ContactController::class, 'store'])->name('contact.store');
+    Route::post('/contact/store', [App\Http\Controllers\ContactController::class, 'store'])->name('contact.store');
+    Route::get('/contact/add', [App\Http\Controllers\ContactController::class, 'create'])->name('contact.add');
 });

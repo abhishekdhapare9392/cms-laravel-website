@@ -52,10 +52,10 @@ class ContactController extends Controller
             $contact->address = $request->address;
 
             if ($contact->save()) {
-                session(['alert' => 'details upload Successfully', 'class' => 'alert alert success']);
+                session(['alert' => 'details upload Successfully', 'class' => 'alert alert-success']);
                 return redirect()->route('contact');
             } else {
-                session(['alert' => 'Unable to upload details please again', 'class' => 'alert alert warning']);
+                session(['alert' => 'Unable to upload details please again', 'class' => 'alert alert-warning']);
                 return redirect()->route('contact.add');
             }
         } else {

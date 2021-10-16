@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\About;
+use App\Models\Skills;
+use App\Models\Testimonials;
 use Illuminate\Http\Request;
 use App\Models\Skills;
 use App\Models\Testimonials;
@@ -17,29 +19,38 @@ class AboutController extends Controller
      */
     public function index()
     {
-
         $skills = Skills::all();
         $testimonials = Testimonials::all();
-        $about = About::first();
-        if(!empty($about)){
-            $skills_list = explode(',', $about->skills);
-        }
-        $i= 0;
-        $skillsArray = [];
-        foreach ($skills_list as $key => $value) {
-            if(!empty($value)){
-                $skillsArray[$i] = Skills::where('id', $value)->first();
-            }
-            $i++;
-        }
-        // var_dump($skillsArray);
-
-        
-        // var_dump($skills);
-        // var_dump($testimonials);
-        // exit();
         $active_menu = 'abouts';
-        return view('about.about', compact('active_menu', 'skills', 'testimonials', 'about', 'skillsArray'));
+        $about = About::first();
+
+        $skillsArray = [];
+        if (!empty($about)) {
+            $skills_list = explode(',', $about->skills);
+            $i = 0;
+            var_dump($skills_list);
+            exit();
+            foreach ($skills_list as $key => $value) {
+                if (!empty($value)) {
+                    $skillsArray[$i] = Skills::where('id', $value)->first();
+                }
+                $i++;
+            };
+        }
+
+        $testsArray = [];
+        if (!empty($about)) {
+            $testimonials = explode(',', $about->testimonials);
+            $i = 0;
+            foreach ($testimonials as $key => $value) {
+                if (!empty($value)) {
+                    $testsArray[$i] = Testimonials::where('id', $value)->first();
+                }
+                $i++;
+            }
+        }
+
+        return view('about.about', compact('about', 'active_menu', 'testimonials', 'testsArray', 'skillsArray', 'skills'));
     }
 
     /**
