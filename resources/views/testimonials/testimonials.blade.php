@@ -16,7 +16,7 @@
                                 @csrf
                                 <div class="col-md-6 mb-3">
                                     <label for="client_name" class="form-label">Client name:</label>
-                                    <input type="text" name="client_name" id="client-name" class="form-control"
+                                    <input type="text" name="client_name" id="client_name" class="form-control"
                                         placeholder="Enter the name of client" aria-describedby="helpId">
                                 </div>
 
@@ -35,25 +35,18 @@
                         </div>
                     </div>
 
+
                     <div class="row">
                         <div class="col-12 col-md-12">
                             <button type="submit" class="btn btn-success" value="save" name="submit">Submit</button>
                         </div>
                     </div>
 
-
-
                     </form>
                 </div>
             </div>
         </div>
-
     </div>
-</div>
-</div>
-</div>
-
-
 </div>
 
 
