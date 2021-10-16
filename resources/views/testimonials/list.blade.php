@@ -54,6 +54,7 @@
                                         class="btn btn-primary"><i class="fas fa-pencil"></i></a>
                                     <a href="{{route('testimonials.delete', $testimonial->id)}}"
                                         class="btn btn-danger"><i class="fas fa-trash"></i></a>
+
                                 </td>
                             </tr>
                             @endforeach

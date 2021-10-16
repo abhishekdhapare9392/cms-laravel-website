@@ -1,12 +1,15 @@
+
 $('#addSkills').on('click',function () {
  // console.log('clicked')
   $('#skillsModal').modal('show')
    $('input[type=checkbox]')
+
     .filter(':checked')
     .each(function () {
       $(this).prop('checked', false)
     })
 })
+
 
 $(document).on('click','.selectSkills',function () {
     console.log('clicked')
@@ -33,5 +36,6 @@ $(document).on('click','.selectSkills',function () {
 
 })
   $('#skillsModal').modal('hide')
+
 
 })

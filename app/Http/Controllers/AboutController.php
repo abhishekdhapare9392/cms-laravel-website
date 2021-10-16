@@ -6,6 +6,8 @@ use App\Models\About;
 use App\Models\Skills;
 use App\Models\Testimonials;
 use Illuminate\Http\Request;
+use App\Models\Skills;
+use App\Models\Testimonials;
 use File;
 
 class AboutController extends Controller
@@ -71,15 +73,16 @@ class AboutController extends Controller
     {
         // var_dump($request->image);
         // exit();
-        if (!empty($request->title) && !empty($request->image) && !empty($request->mission) && !empty($request->vision)) {
-
+        if (!empty($request->id)) {
+            
             if (!empty($request->title) && !empty($request->mission) && !empty($request->vision)) {
-
+                
                 $about = About::where('id', $request->id)->first();
                 $about->title = $request->title;
                 // $about->image = $request->image;
                 $about->mission = $request->mission;
                 $about->vision = $request->vision;
+                $about->skills = $request->skills;
 
                 // var_dump($request->hasFile('image'));
                 // var_dump($_FILES['image']['name'] != '');
@@ -123,6 +126,7 @@ class AboutController extends Controller
                 // $about->image = $request->image;
                 $about->mission = $request->mission;
                 $about->vision = $request->vision;
+                $about->skills = $request->skills;
 
                 // var_dump($request->hasFile('image'));
                 // var_dump($_FILES['image']['name'] != '');

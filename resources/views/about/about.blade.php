@@ -1,6 +1,8 @@
+
 @extends('layouts.app')
 
 @section('content')
+
 
 <div class="container-fluid">
     <div class="row">
@@ -14,13 +16,13 @@
                         <div class="col-12 col-md-12">
                             <form action="{{ route('abouts.store') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
-
+                                <input type="hidden" name="id" value="{{ isset($about->id) ? $about->id : '' }}">
                                 <div class="row mb-3">
                                     <div class="col-12 col-md-6">
                                         <div class="form-group">
                                             <label for="title">Title</label>
                                             <input type="text" id="title" name="title"
-                                                placeholder="Enter the title of about page" class="form-control">
+                                                placeholder="Enter the title of about page" class="form-control" value="{{ isset($about->title) ? $about->title : '' }}">
                                         </div>
                                     </div>
                                     <div class="col-12 col-md-6">
@@ -51,6 +53,20 @@
                                             <input type="text" name="vision" id="vision" class="form-control"
                                                 placeholder="Enter the vision"
                                                 value="{{ isset($about->vision) ? $about->vision : '' }}">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-12 col-md-6">
+                                        <div class="form-group">
+                                            <label for="skills">Skills</label>
+                                            <button type="button" class="btn btn-warning rounded" id="addSkills"><i class="fas fa-plus"></i>&nbsp;Add Skills</button>
+                                            <input type="hidden" name="skills" class="skillId">
+                                        </div>
+                                        <div class="flex-d flex-row my-2" id="skillsList">
+                                            @foreach ($skillsArray as $skill)
+                                            <span class="badge rounded-pill bg-info me-2">{{$skill->skill_name .' - '. $skill->skill_percentage}}%</span>
+                                            @endforeach
                                         </div>
                                     </div>
                                 </div>
@@ -109,8 +125,6 @@
         </div>
     </div>
 </div>
-
-
 
 <!--Skill Modal -->
 <div class="modal fade" id="skillsModal" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
@@ -179,7 +193,6 @@
         </div>
     </div>
 </div>
-
 
 
 @endsection
